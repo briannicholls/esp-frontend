@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  </head>
+
+<body>
+
+<div id="myModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <a href="http://www.espresearch.com/iphone/">From the website of Russel Targ:</a>
+
+    <p>"The ESP trainer was developed under a NASA program by Russell Targ at Stanford Research Institute.</p>
+
+    <p>We have found that people are able to improve their ESP scores by using a machine just like this and get in touch with the part of themselves that is psychic. This is often called a clairvoyant ability, and can enhance your life in many surprising ways.</p>
+
+    <p>The player is presented with four colored squares. For each trial, one has been selected at random by the ESP Trainer. Your task is to choose the correct square.</p>
+
+    <p>If you succeed, you will hear a chime, and see a large color picture. Otherwise, the system lights up the correct square, and you proceed with the next trial. The score indicator at the top counts the number of correct choices. Words of encouragement appear as you achieve the scoring levels of 6, 8. 10, 12 or 14 hits. After 24 trials you may begin a new game.</p>
+
+    <p>The game offers multi-sensory feedback, reinforcement, and an opportunity to Pass, meeting all the requirements needed for learning this skill. ESP Trainer improves your ability to recognize your intuitive impressions, and it can bring you to a level of intuitive awareness beyond anything you've experienced before.
+    </p>
+    <p>The purpose of the trainer is to allow you to become aware of what it feels like when you psychically choose the correct square. When you don't have that special feeling, we encourage you to press the Pass button. (So this is not a "forced choice" test.)</p>
+    <p>In a year long NASA program with 145 subjects (under Contract 953653 NAS7-100) many were able to significantly improve their scores. Four of the subjects improved their scores at the hundred-to-one level or better. This approach has been used with surprising success on Wall Street. But of course, past results are no guarantee of future performance.</p>
+    <p>Because you are learning a new skill, slower is better than faster.</p>
+    <p>If you find yourself frequently scoring 12 or more, write to the developer: <a href="https://www.dojopsi.com/contactrussell.cfm">Contact Russel Targ</a></p>
+    <p>This game can provide the first steps toward experiencing and developing the psychic abilities hidden within us all."</p>
+
+    <p><a href="https://www.youtube.com/watch?v=hBl0cwyn5GY" target="_blank">Watch Russel Targ's banned TED Talk about his work in the field of Remote Viewing</a></p>
+  </div>
+</div>
+
+<div id="score-modal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h1>Score:</h1>
+    <h2 id="score-display"></h2>
+  </div>
+</div>
+
+<div class="game w3-blue-grey">
+
+  <div class="wrap">
+    <div class="grid">
+      <div id="1"  class="grid__item w3-card w3-btn w3-round-large w3-red" ></div>
+      <div id="2" class="grid__item w3-card w3-btn w3-round-large w3-blue" ></div>
+      <div id="3"  class="grid__item w3-card w3-btn w3-round-large w3-green" ></div>
+      <div id="4" class="grid__item w3-card w3-btn w3-round-large w3-yellow" ></div>
+    </div> <!-- grid -->
+    <div class="grid2">
+      <div id="pass" class="grid__item w3-card w3-btn w3-round-large w3-grey w3-block  w3-container" ><h1 class="w3-opacity">Pass</h1></div>
+    </div>
+  </div> <!-- wrap -->
+  <div class="wrap">
+
+
+  <div class="side-bar">
+
+    <div class="title">
+      <h1>ESP Trainer</h1>
+    </div>
+
+    <div class="buttons">
+      <button class="w3-btn w3-bar w3-black w3-border" id="myBtn">
+        View Instructions
+      </button>
+
+      <button class="w3-btn w3-bar w3-black w3-border" id="start_game">
+        Start Game
+      </button>
+    </div> <!-- buttons -->
+
+    <div class="turn-number">
+
+      <h1><span id="turn-counter">0</span>/24</h1>
+
+    </div> <!-- turn-number -->
+
+  </div> <!-- sidebar -->
+
+  </div>
+
+</div> <!-- game -->
+
+<script type="text/javascript" src="js/index.js"       ></script>
+<script type="text/javascript" src="js/models/game.js"></script>
+<script type="text/javascript" src="js/models/trial.js"></script>
+<script type="text/javascript" src="js/models/turn.js" ></script>
+<script type="text/javascript" src="js/models/asset.js"></script>
+
+</body>
+
+</html>
