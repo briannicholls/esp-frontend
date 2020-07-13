@@ -36,11 +36,11 @@
   </div>
 </div>
 
-<div id="score-modal" class="modal">
+<div id="image-modal" class="modal">
   <div class="modal-content">
     <span class="close">&times;</span>
     <h1>Score:</h1>
-    <h2 id="score-display"></h2>
+    <img id="image-display"></img>
   </div>
 </div>
 
@@ -48,13 +48,13 @@
 
   <div class="wrap">
     <div class="grid">
-      <div id="1"  class="grid__item w3-card w3-btn w3-round-large w3-red" ></div>
-      <div id="2" class="grid__item w3-card w3-btn w3-round-large w3-blue" ></div>
-      <div id="3"  class="grid__item w3-card w3-btn w3-round-large w3-green" ></div>
-      <div id="4" class="grid__item w3-card w3-btn w3-round-large w3-yellow" ></div>
+      <div id="1"  class="game-button grid__item w3-card w3-btn w3-round-large w3-red" ></div>
+      <div id="2" class="game-button grid__item w3-card w3-btn w3-round-large w3-blue" ></div>
+      <div id="3"  class="game-button grid__item w3-card w3-btn w3-round-large w3-green" ></div>
+      <div id="4" class="game-button grid__item w3-card w3-btn w3-round-large w3-yellow" ></div>
     </div> <!-- grid -->
     <div class="grid2">
-      <div id="pass" class="grid__item w3-card w3-btn w3-round-large w3-grey w3-block  w3-container" ><h1 class="w3-opacity">Pass</h1></div>
+      <div id="pass" class="game-button grid__item w3-card w3-btn w3-round-large w3-grey w3-block  w3-container" >Pass</div>
     </div>
   </div> <!-- wrap -->
   <div class="wrap">
@@ -83,16 +83,13 @@
     </div> <!-- turn-number -->
 
   </div> <!-- sidebar -->
-
   </div>
 
 </div> <!-- game -->
 
 <script type="text/javascript" src="js/index.js"       ></script>
-<script type="text/javascript" src="js/models/game.js"></script>
 <script type="text/javascript" src="js/models/trial.js"></script>
 <script type="text/javascript" src="js/models/turn.js" ></script>
-<script type="text/javascript" src="js/models/asset.js"></script>
 
 </body>
 
