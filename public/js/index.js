@@ -37,11 +37,16 @@ function submitChoice(choice) {
     // show image modal
     getImageModal().style.display = 'block'
     // play "correct" sound
+    getCorrectSound().play()
   } else if (choice == 'pass') {
     console.log('user passed')
   } else {
     console.log('incorrect!')
     // play "incorrect" sound
+  }
+
+  function getCorrectSound() {
+    return document.getElementById('correct-sound')
   }
 
   const totalChoicesMadeByUser = Turn.all.reduce((total, turn) => {
@@ -93,9 +98,10 @@ function getImageModal() {
 }
 
 function addImageToDOM(url) {
-  getImageModal().style.display = 'none'
+  // getImageModal().style.display = 'none'
   const imageElement = document.getElementById('image-display')
-  imageElement.src = url
+  imageElement.setAttribute('src', url)
+  imageElement.setAttribute('alt', 'description')
 }
 
 function incrementTurnCounter() {
