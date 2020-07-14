@@ -133,8 +133,8 @@ function applyModal() {
 
 function applyImageModal() {
   let modal = document.getElementById("image-modal");
-  let span = document.getElementsByClassName("close2")[0];
-  span.onclick = () => { modal.style.display = "none" }
+  let span = document.getElementsByClassName("close")[1];
+  span.onclick = function() { modal.style.display = "none" }
   window.onclick = event => {if (event.target == modal) {modal.style.display = "none"};};
 }
 
