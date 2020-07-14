@@ -3,9 +3,12 @@ class Turn {
     this.computer_choice = Math.ceil(Math.random() * 4),
     this.user_choice = ''
     this.image_url = data.image_url
+    this.save()
   }
 
-  save(trial) {
-    trial.turns.push(this)
+  static all = []
+
+  save() {
+    Turn.all.push(this)
   }
 }

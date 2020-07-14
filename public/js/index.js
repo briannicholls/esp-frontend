@@ -7,21 +7,31 @@ document.addEventListener('DOMContentLoaded', () => {
   addStartGameButton()
 })
 
-function addGameButtonListeners(trial) {
-  gameButtons = document.querySelectorAll('.game-button')
-  for (let i = 0; i < gameButtons.length; i++) {
-    gameButtons[i].addEventListener('click', (e) => {
-      e.stopPropagation()
-      const userChoice = e.target.id
-      submitChoice(userChoice, trial)
-    })
-  }
+function handleClick(e) {
+  const userChoice = e.target.id
+  submitChoice(userChoice)
 }
 
-function submitChoice(choice, trial) {
-  const turn = trial.turns[trial.turns.length - 1]
+function getGameButtons() {
+  return document.querySelectorAll('.game-button')
+}
+
+function addGameButtonListeners(trial) {
+  getGameButtons().forEach((button, i) => {
+    button.addEventListener('click', handleClick)
+  });
+}
+
+function removeGameButtonListeners() {
+  getGameButtons().forEach((button, i) => {
+    button.removeEventListener('click', handleClick)
+  });
+}
+
+function submitChoice(choice) {
+  const turn = Turn.all[Turn.all.length - 1]
   turn.user_choice = choice
-  
+
   if (turn.user_choice === `${turn.computer_choice}`) {
     console.log("correct!")
   } else if (choice == 'pass') {
@@ -30,7 +40,7 @@ function submitChoice(choice, trial) {
     console.log('incorrect!')
   }
 
-  const totalChoicesMadeByUser = trial.turns.reduce((total, turn) => {
+  const totalChoicesMadeByUser = Turn.all.reduce((total, turn) => {
     if (turn.user_choice != 'pass') {
       return total += 1
     } else {
@@ -39,14 +49,16 @@ function submitChoice(choice, trial) {
   }, 0)
 
   if (totalChoicesMadeByUser < 24) {
-    beginNewTurn(trial)
+    beginNewTurn()
   } else {
-    endGame(trial)
+    endGame()
   }
 }
 
-function endGame(trial) {
-  const result = trial.turns.reduce((total, turn) => {
+function endGame() {
+  removeGameButtonListeners()
+
+  const result = Turn.all.reduce((total, turn) => {
     if (turn.user_choice == turn.computer_choice) {
       total.correct += 1
     } else if (turn.user_choice != 'pass'){
@@ -61,14 +73,14 @@ function endGame(trial) {
 }
 
 // Game Loop
-function startGame(trial) {
-  addGameButtonListeners(trial)
-  beginNewTurn(trial)
+function startGame() {
+  addGameButtonListeners()
+  beginNewTurn()
 }
 
-function beginNewTurn(trial) {
+function beginNewTurn() {
   const url = 'https://previews.123rf.com/images/vitplus/vitplus1612/vitplus161200019/69533061-little-puppy-sleeping-sweet-on-soft-cozy-knitted-sweater-cute-dog-dreaming-retro-filtered.jpg'
-  trial.addTurn(new Turn({image_url: url}))
+  new Turn({image_url: url})
   addImageToDOM(url)
 }
 
@@ -117,7 +129,6 @@ function addStartGameButton() {
   const button = document.getElementById('start_game')
   button.addEventListener('click', () => {
     button.disabled = true
-    const trial = new Trial
-    startGame(trial)
+    startGame()
   })
 }
