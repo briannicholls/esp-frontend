@@ -3,7 +3,7 @@ const API = {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  applyModal()
+  applyModals()
   addStartGameButton()
 })
 
@@ -34,10 +34,14 @@ function submitChoice(choice) {
 
   if (turn.user_choice === `${turn.computer_choice}`) {
     console.log("correct!")
+    // show image modal
+    getImageModal().style.display = 'block'
+    // play "correct" sound
   } else if (choice == 'pass') {
     console.log('user passed')
   } else {
     console.log('incorrect!')
+    // play "incorrect" sound
   }
 
   const totalChoicesMadeByUser = Turn.all.reduce((total, turn) => {
@@ -84,9 +88,12 @@ function beginNewTurn() {
   addImageToDOM(url)
 }
 
+function getImageModal() {
+  return document.getElementById('image-modal')
+}
+
 function addImageToDOM(url) {
-  const imageModal = document.getElementById('image-modal')
-  imageModal.display = 'none'
+  getImageModal().style.display = 'none'
   const imageElement = document.getElementById('image-display')
   imageElement.src = url
 }
@@ -103,9 +110,9 @@ function resetTurnCounter() {
 
 // Add the instructions modal
 function applyModal() {
-  let modal = document.getElementById("myModal");
+  let modal = document.getElementById("instructions-modal");
   // Get the button that opens the modal
-  let btn = document.getElementById("myBtn");
+  let btn = document.getElementById("view-instructions");
   // Get the <span> element that closes the modal
   let span = document.getElementsByClassName("close")[0];
   // When the user clicks on the button, open the modal
@@ -123,6 +130,15 @@ function applyModal() {
     }
   }
 }
+
+function applyImageModal() {
+  let modal = document.getElementById("image-modal");
+  let span = document.getElementsByClassName("close2")[0];
+  span.onclick = () => { modal.style.display = "none" }
+  window.onclick = event => {if (event.target == modal) {modal.style.display = "none"};};
+}
+
+function applyModals() {applyModal(); applyImageModal();}
 
 // add onClick action to Start Game button
 function addStartGameButton() {
