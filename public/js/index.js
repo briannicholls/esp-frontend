@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
 function handleClick(e) {
   const userChoice = e.target.id
   submitChoice(userChoice)
+  removeGameButtonListeners()
 }
 
 function getGameButtons() {
