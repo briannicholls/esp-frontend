@@ -82,6 +82,20 @@ function toggleImageModal() {
   }
 }
 
+function showImageModal() {
+  const modal = getImageModal()
+  if (modal.style.display == 'none') {
+    modal.style.display = 'block'
+  }
+}
+
+function hideImageModal() {
+  const modal = getImageModal()
+  if (modal.style.display == 'block') {
+    modal.style.display = 'none'
+  }
+}
+
 function gameIsOver() {
   const totalChoicesMadeByUser = Turn.all.reduce((total, turn) => {
     if (turn.user_choice != 'pass') {
