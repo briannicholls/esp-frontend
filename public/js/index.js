@@ -35,7 +35,13 @@ function submitChoice(choice) {
   if (turn.user_choice === `${turn.computer_choice}`) {
     console.log("correct!")
     // show image modal
-    getImageModal().style.display = 'block'
+    toggleImageModal()
+    setTimeout(() => {
+      if (!gameIsOver()) {
+        toggleImageModal()
+        beginNewTurn()
+      }
+    }, 4600)
     // play "correct" sound
     getCorrectSound().play()
   } else if (choice == 'pass') {
@@ -43,12 +49,20 @@ function submitChoice(choice) {
   } else {
     console.log('incorrect!')
     // play "incorrect" sound
+    getIncorrectSound().play()
   }
+}
 
-  function getCorrectSound() {
-    return document.getElementById('correct-sound')
+function toggleImageModal() {
+  const modal = getImageModal()
+  if (modal.style.display == 'block') {
+    modal.style.display = 'none'
+  } else {
+    modal.style.display = 'block'
   }
+}
 
+function gameIsOver() {
   const totalChoicesMadeByUser = Turn.all.reduce((total, turn) => {
     if (turn.user_choice != 'pass') {
       return total += 1
@@ -56,12 +70,15 @@ function submitChoice(choice) {
       return total
     }
   }, 0)
+  totalChoicesMadeByUser < 24 ? false : true
+}
 
-  if (totalChoicesMadeByUser < 24) {
-    beginNewTurn()
-  } else {
-    endGame()
-  }
+function getCorrectSound() {
+  return document.getElementById('correct-sound')
+}
+
+function getIncorrectSound() {
+  return document.getElementById('incorrect-sound')
 }
 
 function endGame() {
@@ -73,7 +90,6 @@ function endGame() {
     } else if (turn.user_choice != 'pass'){
       total.incorrect += 1
     } else {
-
     }
     return total
   }, {correct: 0, incorrect: 0})
