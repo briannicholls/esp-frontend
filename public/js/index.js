@@ -98,7 +98,6 @@ function getImageModal() {
 }
 
 function addImageToDOM(url) {
-  // getImageModal().style.display = 'none'
   const imageElement = document.getElementById('image-display')
   imageElement.setAttribute('src', url)
   imageElement.setAttribute('alt', 'description')
@@ -139,8 +138,8 @@ function applyModal() {
 
 function applyImageModal() {
   let modal = document.getElementById("image-modal");
-  let span = document.getElementsByClassName("close")[1];
-  span.onclick = function() { modal.style.display = "none" }
+  // let span = document.getElementsByClassName("close")[1];
+  // span.onclick = function() { modal.style.display = "none" }
   window.onclick = event => {if (event.target == modal) {modal.style.display = "none"};};
 }
 
