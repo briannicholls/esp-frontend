@@ -35,21 +35,42 @@ function submitChoice(choice) {
     console.log("correct!")
     // show image modal
     toggleImageModal()
-    setTimeout(() => {
-      if (!gameIsOver()) {
-        toggleImageModal()
-        beginNewTurn()
-      }
-    }, 4600)
     // play "correct" sound
     getCorrectSound().play()
+    incrementTurnCounter()
+    continueGame(4600)
   } else if (choice == 'pass') {
     console.log('user passed')
+    highlightButton(turn.computer_choice)
+    continueGame(1500)
   } else {
     console.log('incorrect!')
+    // highlight correct choice
+    highlightButton(turn.computer_choice)
     // play "incorrect" sound
     getIncorrectSound().play()
+    incrementTurnCounter()
+    continueGame(1500)
   }
+}
+
+function continueGame(delay) {
+  setTimeout(() => {
+    if (gameIsOver()) {
+      return gameOver()
+    } else {
+      beginNewTurn()
+    }
+  }, delay)
+}
+
+function highlightButton(id) {
+  const element = document.getElementById(id)
+  element.classList.add('w3-white')
+}
+
+function getButton(id) {
+  return document.getElementById(id)
 }
 
 function toggleImageModal() {
