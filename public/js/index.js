@@ -104,9 +104,14 @@ function startGame() {
 }
 
 function beginNewTurn() {
-  const url = 'https://previews.123rf.com/images/vitplus/vitplus1612/vitplus161200019/69533061-little-puppy-sleeping-sweet-on-soft-cozy-knitted-sweater-cute-dog-dreaming-retro-filtered.jpg'
-  new Turn({image_url: url})
-  addImageToDOM(url)
+  // get image from API!
+  fetch('https://picsum.photos/700')
+    .then(resp => resp.url)
+    .then(url => {
+      new Turn({image_url: url})
+      addImageToDOM(url)
+      console.log('added image to DOM')
+    })
 }
 
 function getImageModal() {
