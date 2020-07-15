@@ -1,6 +1,4 @@
-const API = {
-  baseUrl: 'http://localhost:3000'
-}
+const API = {baseUrl: 'http://localhost:3000'}
 
 document.addEventListener('DOMContentLoaded', () => {
   applyModals()
