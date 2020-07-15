@@ -121,9 +121,41 @@ function beginNewTurn() {
     .then(resp => resp.url)
     .then(url => {
       new Turn({image_url: url})
+      hideImageModal()
+      // reset highlighted square
+      removeHighlightFromButton()
       addImageToDOM(url)
       console.log('added image to DOM')
+      // add click listeners back to btns
+      addGameButtonListeners()
     })
+}
+
+function gameOver() {
+  console.log("Game Over")
+  hideImageModal()
+  removeHighlightFromButton()
+  removeGameButtonListeners()
+  resetTurnCounter()
+  displayScore()
+}
+
+function displayScore() {
+  const result = Turn.all.reduce((total, turn) => {
+    if (turn.user_choice == turn.computer_choice) {
+      total.correct += 1
+    } else if (turn.user_choice != 'pass'){
+      total.incorrect += 1
+    } else {
+    }
+    return total
+  }, {correct: 0, incorrect: 0})
+  console.log(result)
+}
+
+function removeHighlightFromButton() {
+  const btn = document.getElementsByClassName('w3-white')[0]
+  !!btn ? btn.classList.remove('w3-white') : null
 }
 
 function getImageModal() {
