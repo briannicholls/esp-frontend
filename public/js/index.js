@@ -2,7 +2,7 @@ const API = {baseUrl: 'http://localhost:3000'}
 
 document.addEventListener('DOMContentLoaded', () => {
   applyModals()
-  addStartGameButton()
+  addStartGameListener()
 })
 
 function handleClick(e) {
@@ -157,15 +157,12 @@ function applyModal() {
 
 function applyImageModal() {
   let modal = document.getElementById("image-modal");
-  // let span = document.getElementsByClassName("close")[1];
-  // span.onclick = function() { modal.style.display = "none" }
-  window.onclick = event => {if (event.target == modal) {modal.style.display = "none"};};
 }
 
 function applyModals() {applyModal(); applyImageModal();}
 
 // add onClick action to Start Game button
-function addStartGameButton() {
+function addStartGameListener() {
   const button = document.getElementById('start_game')
   button.addEventListener('click', () => {
     button.disabled = true
