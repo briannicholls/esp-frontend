@@ -97,14 +97,8 @@ function hideImageModal() {
 }
 
 function gameIsOver() {
-  const totalChoicesMadeByUser = Turn.all.reduce((total, turn) => {
-    if (turn.user_choice != 'pass') {
-      return total += 1
-    } else {
-      return total
-    }
-  }, 0)
-  totalChoicesMadeByUser < 24 ? false : true
+  const totalChoicesMadeByUser = parseInt(document.getElementById('turn-counter').innerText)
+  return totalChoicesMadeByUser >= 24 ? true : false
 }
 
 function getCorrectSound() {
@@ -113,22 +107,6 @@ function getCorrectSound() {
 
 function getIncorrectSound() {
   return document.getElementById('incorrect-sound')
-}
-
-function endGame() {
-  removeGameButtonListeners()
-
-  const result = Turn.all.reduce((total, turn) => {
-    if (turn.user_choice == turn.computer_choice) {
-      total.correct += 1
-    } else if (turn.user_choice != 'pass'){
-      total.incorrect += 1
-    } else {
-    }
-    return total
-  }, {correct: 0, incorrect: 0})
-  console.log(result)
-  // game is over, submit data to server
 }
 
 // Game Loop
