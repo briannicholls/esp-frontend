@@ -151,6 +151,8 @@ function displayScore() {
     return total
   }, {correct: 0, incorrect: 0})
   console.log(result)
+  document.getElementById('score-modal').style.display = 'block'
+  document.getElementById('score-display').innerText = `You scored ${result.correct} out of 24 (${Math.round((result.correct / 24) * 100)}%)`
 }
 
 function removeHighlightFromButton() {
