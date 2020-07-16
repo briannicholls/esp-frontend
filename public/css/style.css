@@ -12,7 +12,7 @@
 
 .game {
   padding: 80px;
-  max-width: 1400px;
+  /* max-width: 2400px; */
   display: flex;
 }
 
@@ -75,6 +75,15 @@
   padding: 20px;
   border: 1px solid #888;
   width: 80%; /* Could be more or less, depending on screen size */
+}
+
+.image-content {
+  margin: 1%;
+  padding: 10px;
+  width: 95%;
+  height: 95%;
+  border: 1px solid #888;
+  background-color: #fefefe;
 }
 
 /* The Close Button */
