@@ -10,6 +10,10 @@
   box-sizing: border-box;
 }
 
+html {
+  background-color: #607d8b;
+}
+
 .game {
   padding: 80px;
   /* max-width: 2400px; */
