@@ -21,12 +21,6 @@ function hideImageModal() {
   }
 }
 
-// HTML Element Get functions
-function getImageModal() {  return document.getElementById('image-modal');  }
-function getCorrectSound() {  return document.getElementById('correct-sound');  }
-function getIncorrectSound() {  return document.getElementById('incorrect-sound');  }
-function getGameButtons() {  return document.querySelectorAll('.game-button');  }
-
 // Highlight the button with input id to User
 function addHighlightToButton(id) {
   const element = document.getElementById(id)
@@ -49,9 +43,9 @@ function displayScore() {
     }
     return total
   }, {correct: 0, incorrect: 0})
-  console.log(result)
-  document.getElementById('score-modal').style.display = 'block'
-  document.getElementById('score-display').innerText = `You scored ${result.correct} out of 24 (${Math.round((result.correct / 24) * 100)}%)`
+
+  getScoreModal().style.display = 'block'
+  getScoreCounter().innerText = `You scored ${result.correct} out of 24 (${Math.round((result.correct / 24) * 100)}%)`
 }
 
 function addImageToDOM(url) {
@@ -69,3 +63,12 @@ function incrementTurnCounter() {
 function resetTurnCounter() {
   document.querySelector('#turn-counter').innerText = 0
 }
+
+// HTML Element Get functions
+function getImageModal() {  return document.getElementById('image-modal');  }
+function getScoreModal() {  return document.getElementById('score-modal');  }
+function getCorrectSound() {  return document.getElementById('correct-sound');  }
+function getIncorrectSound() {  return document.getElementById('incorrect-sound');  }
+function getGameButtons() {  return document.querySelectorAll('.game-button');  }
+function getScoreCounter() {  return document.getElementById('score-display');  }
+function getTurnCounter() {  return document.getElementById('turn-counter');  }

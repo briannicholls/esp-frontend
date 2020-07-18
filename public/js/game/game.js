@@ -3,6 +3,24 @@ function startGame() {
   beginNewTurn()
 }
 
+// Start a new Turn
+function beginNewTurn() {
+  // get a new image from the API!
+  fetch('https://picsum.photos/700')
+  .then(resp => resp.url)
+  .then(url => {
+    // Once we have a new image, hide the old image
+    hideImageModal()
+    new Turn({image_url: url})
+    // reset highlighted square
+    removeHighlightFromButton()
+    addImageToDOM(url)
+    // Allow User to now choose a square
+    addGameButtonListeners()
+    console.log('Turn has started!')
+  })
+}
+
 // Add event listeners to Game-relevant Buttons
 function addGameButtonListeners(trial) {
   getGameButtons().forEach((button, i) => {
@@ -19,9 +37,9 @@ function removeGameButtonListeners() {
 
 // Submits the clicked element's id as the user's choice
 function handleClick(e) {
+  removeGameButtonListeners()
   const userChoice = e.target.id
   submitChoice(userChoice)
-  removeGameButtonListeners()
 }
 
 function submitChoice(choice) {
@@ -73,29 +91,11 @@ function continueGame(delay) {
     }
   }, delay)
 }
-// Returns Boolean
-function gameIsOver() {
-  // If HTML counter has reached 24
-  const totalChoicesMadeByUser = parseInt(document.getElementById('turn-counter').innerText)
-  return totalChoicesMadeByUser >= 24 ? true : false
-}
 
-// Start a new Turn
-function beginNewTurn() {
-  // get a new image from the API!
-  fetch('https://picsum.photos/700')
-  .then(resp => resp.url)
-  .then(url => {
-    // Once we have a new image, hide the old image
-    hideImageModal()
-    new Turn({image_url: url})
-    // reset highlighted square
-    removeHighlightFromButton()
-    addImageToDOM(url)
-    // Allow User to now choose a square
-    addGameButtonListeners()
-    console.log('Turn has started!')
-  })
+// Returns Boolean, if HTML counter has reached 24
+function gameIsOver() {
+  const totalChoicesMadeByUser = parseInt(getTurnCounter().innerText)
+  return totalChoicesMadeByUser >= 24 ? true : false
 }
 
 function gameOver() {
@@ -103,6 +103,5 @@ function gameOver() {
   hideImageModal()
   removeHighlightFromButton()
   removeGameButtonListeners()
-  resetTurnCounter()
   displayScore()
 }
