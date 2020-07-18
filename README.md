@@ -25,7 +25,9 @@ This game can provide the first steps toward experiencing and developing the psy
 
 # Installation
 
-[If you have Node.js installed,](https://nodejs.org/en/download/package-manager/) you can run the game locally at `http://localhost:3000/`.  Navigate to the root folder in your terminal where you will see the file `index.js`, and run `node index.js`.
+First, download or clone this repo.
+
+[If you have Node.js installed,](https://nodejs.org/en/download/package-manager/) you can run the game locally at `http://localhost:3000/`.  Navigate to the root folder in your terminal, where you will see the file `index.js`, then run `node index.js`.
 
 Alternatively, if you just want to play the game, you may open `../public/index.html`  in a browser. It's just Javascript!
 
