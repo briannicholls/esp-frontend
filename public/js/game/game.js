@@ -73,12 +73,12 @@ function userChoseIncorrectly(turn) {
   addHighlightToButton(turn.computer_choice)
   getIncorrectSound().play()
   incrementTurnCounter()
-  continueGame(1300)
+  continueGame(1000)
 }
 
 function userPassed(turn) {
   addHighlightToButton(turn.computer_choice)
-  continueGame(1300)
+  continueGame(1000)
 }
 
 // Dictates Turn length
