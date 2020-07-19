@@ -52,7 +52,7 @@ function submitChoice(choice) {
   if (turn.user_choice === `${turn.computer_choice}`) {
     userChoseCorrectly(turn)
   } else if (choice == 'pass') {
-    userPassed()
+    userPassed(turn)
   } else {
     userChoseIncorrectly(turn)
   }
@@ -76,7 +76,7 @@ function userChoseIncorrectly(turn) {
   continueGame(1300)
 }
 
-function userPassed() {
+function userPassed(turn) {
   addHighlightToButton(turn.computer_choice)
   continueGame(1300)
 }
